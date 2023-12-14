@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 
-import React  from 'react';
+import React from 'react';
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
@@ -13,14 +13,17 @@ import { Config } from './views/Config';
 const Drawer = createDrawerNavigator();
 
 const App =() => {
+
   return (
-    <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen name="Home" component={Home} />
-        <Drawer.Screen name="Notifications" component={Notifications} />
-        <Drawer.Screen name="Configuracion" component={Config} />
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <AppState>
+      <NavigationContainer>
+        <Drawer.Navigator initialRouteName="Home">
+          <Drawer.Screen name="Home" component={Home} />
+          <Drawer.Screen name="Notifications" component={Notifications} />
+          <Drawer.Screen name="Configuracion" component={Config} />
+        </Drawer.Navigator>
+      </NavigationContainer>
+    </AppState>
   );
 }
 // Config
@@ -28,6 +31,7 @@ const App =() => {
 export default App;
 
 const AppState = ({ children }: any) => {
+  return(
   // <Provider store={store}>
       <ThemeProvider>
           {/* <PermmissionsProvider> */}
@@ -35,4 +39,5 @@ const AppState = ({ children }: any) => {
           {/* </PermmissionsProvider> */}
       </ThemeProvider>
     // </Provider>
+  )
 }
