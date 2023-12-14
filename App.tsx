@@ -1,13 +1,13 @@
 import 'react-native-gesture-handler';
 
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { Home } from './views/Home';
 import { Notifications } from './views/Notifications';
-import { ThemeProvider } from './contexts/ThemeContext';
+import { ThemeContext, ThemeProvider } from './contexts/ThemeContext';
 import { Config } from './views/Config';
 
 const Drawer = createDrawerNavigator();
@@ -16,13 +16,7 @@ const App =() => {
 
   return (
     <AppState>
-      <NavigationContainer>
-        <Drawer.Navigator initialRouteName="Home">
-          <Drawer.Screen name="Home" component={Home} />
-          <Drawer.Screen name="Notifications" component={Notifications} />
-          <Drawer.Screen name="Configuracion" component={Config} />
-        </Drawer.Navigator>
-      </NavigationContainer>
+      <Navigation/>
     </AppState>
   );
 }
@@ -39,5 +33,24 @@ const AppState = ({ children }: any) => {
           {/* </PermmissionsProvider> */}
       </ThemeProvider>
     // </Provider>
+  )
+}
+
+const Navigation = () =>{
+  const { theme: { viewStyle, currentTheme, cardStyle } } = useContext(ThemeContext);
+
+  return (
+    <NavigationContainer
+      >
+        <Drawer.Navigator initialRouteName="Home" 
+          screenOptions={{
+            drawerStyle: cardStyle,
+            headerStyle: {...viewStyle, borderBottomWidth:2}
+          }}>
+          <Drawer.Screen name="Home" component={Home} />
+          <Drawer.Screen name="Notifications" component={Notifications} />
+          <Drawer.Screen name="Configuracion" component={Config} />
+        </Drawer.Navigator>
+      </NavigationContainer>
   )
 }

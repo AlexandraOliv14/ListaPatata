@@ -1,4 +1,4 @@
-import { ViewStyle, View } from 'react-native';
+import { ViewStyle } from 'react-native';
 
 type ThemeAction =
     | { type: 'set_default_theme' }
@@ -10,18 +10,25 @@ export interface ThemeState {
     currentTheme: 'theme1' | 'theme2' | 'theme3' |'default';
     viewStyle: ViewStyle;
     cardStyle: ViewStyle;
+    slideStyle: ViewStyle;
+    headerStyle: ViewStyle;
 }
 
 export const defaultTheme: ThemeState = {
     currentTheme: 'default',
     viewStyle: {backgroundColor: 'white'},
     cardStyle: {backgroundColor: 'white'},
+    slideStyle: {backgroundColor: 'white'},
+    headerStyle: {backgroundColor: 'grey'}
 }
 
 export const theme1: ThemeState = {
     currentTheme: 'theme1',
     viewStyle: {backgroundColor: '#b4dfb3'},
     cardStyle: {backgroundColor: '#cde4b3'},
+    slideStyle: {backgroundColor: '#b4dfb3'},
+    headerStyle: {backgroundColor: '#69d0b3'}
+
 
 // .color1 { #69d0b3 };
 // .color2 { #9bdab3 };
@@ -35,6 +42,9 @@ export const theme2: ThemeState = {
     currentTheme: 'theme2',
     viewStyle: {backgroundColor: '#7c6c8c'},
     cardStyle: {backgroundColor: '#c2b6b8'},
+    slideStyle: {backgroundColor: '#bfb2b4'},
+    headerStyle: {backgroundColor: '#8b7377'}
+
 
     // .color1 { #8b7377 };
     // .color2 { #c2b6b8 };
@@ -47,6 +57,8 @@ export const theme3: ThemeState = {
     currentTheme: 'theme3',
     viewStyle: {backgroundColor: '#7c877d'},
     cardStyle: {backgroundColor: '#c5c7b1'},
+    slideStyle: {backgroundColor: '#bcbfa5'},
+    headerStyle: {backgroundColor: '#909569'}
 
     // .color1 { #909569 };
     // .color2 { #c5c7b1 };
